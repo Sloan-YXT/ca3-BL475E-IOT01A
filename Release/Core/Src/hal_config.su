@@ -1,0 +1,11 @@
+../Core/Src/hal_config.c:15:6:Error_Handler	8	static,ignoring_inline_asm
+../Core/Src/hal_config.c:26:6:SystemClock_Config	96	static
+../Core/Src/hal_config.c:73:6:HAL_GPIO_EXTI_Callback	24	static
+../Core/Src/hal_config.c:165:6:timerDelay	24	static
+../Core/Src/hal_config.c:179:13:MX_GPIO_Init	40	static
+../Core/Src/hal_config.c:209:13:MX_SPI3_Init	8	static
+../Core/Src/hal_config.c:243:6:hal_Init	104	static
+../Core/Src/hal_config.c:344:6:HAL_TIM_Base_MspInit	32	static
+../Core/Src/hal_config.c:368:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/hal_config.c:384:6:TIM1_UP_TIM16_IRQHandler	8	static
+../Core/Src/hal_config.c:388:6:TIM2_IRQHandler	8	static

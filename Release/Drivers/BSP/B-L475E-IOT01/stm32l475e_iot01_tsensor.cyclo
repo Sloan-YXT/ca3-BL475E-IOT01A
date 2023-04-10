@@ -1,0 +1,4 @@
+stm32l475e_iot01_tsensor.c:77:10:BSP_TSENSOR_Init	1
+stm32l475e_iot01_tsensor.c:102:7:BSP_TSENSOR_ReadTemp	1
+stm32l475e_iot01_tsensor.c:106:9:BSP_TSENSOR_Ready	1
+stm32l475e_iot01_tsensor.c:110:6:BSP_TSENSOR_WaitReady	1

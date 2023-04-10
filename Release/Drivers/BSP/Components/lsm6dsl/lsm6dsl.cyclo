@@ -1,0 +1,17 @@
+lsm6dsl.c:105:6:LSM6DSL_AccInit	1
+lsm6dsl.c:132:6:LSM6DSL_AccDeInit	1
+lsm6dsl.c:153:9:LSM6DSL_AccReadID	1
+lsm6dsl.c:165:6:LSM6DSL_AccLowPower	2
+lsm6dsl.c:192:6:LSM6DSL_AccReadXYZ	7
+lsm6dsl.c:249:6:LSM6DSL_GyroInit	1
+lsm6dsl.c:277:6:LSM6DSL_GyroDeInit	1
+lsm6dsl.c:298:9:LSM6DSL_GyroReadID	1
+lsm6dsl.c:310:6:LSM6DSL_GyroLowPower	2
+lsm6dsl.c:337:6:LSM6DSL_GyroReadXYZAngRate	7
+lsm6dsl.c:380:9:LSM6DSL_GetStatus	1
+lsm6dsl.c:384:9:LSM6DSL_AccReady	1
+lsm6dsl.c:389:9:LSM6DSL_GyroReady	1
+lsm6dsl.c:394:9:LSM6DSL_TempReady	1
+lsm6dsl.c:399:6:LSM6DSL_AccWaitReady	2
+lsm6dsl.c:408:6:LSM6DSL_GyroWaitReady	2
+lsm6dsl.c:417:6:LSM6DSL_TempWaitReady	2

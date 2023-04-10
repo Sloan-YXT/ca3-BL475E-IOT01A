@@ -1,0 +1,5 @@
+stm32l475e_iot01_hsensor.c:77:10:BSP_HSENSOR_Init	2
+stm32l475e_iot01_hsensor.c:100:9:BSP_HSENSOR_ReadID	1
+stm32l475e_iot01_hsensor.c:109:7:BSP_HSENSOR_ReadHumidity	1
+stm32l475e_iot01_hsensor.c:113:9:BSP_HSENSOR_Ready	1
+stm32l475e_iot01_hsensor.c:117:6:BSP_HSENSOR_WaitReady	1

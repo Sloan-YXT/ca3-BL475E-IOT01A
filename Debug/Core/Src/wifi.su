@@ -1,0 +1,13 @@
+../Core/Src/wifi.c:16:6:WIFI_DEBUG	3088	static
+../Core/Src/wifi.c:25:10:htonl	24	static
+../Core/Src/wifi.c:30:20:WIFI_SPI_Receive	32	static
+../Core/Src/wifi.c:61:20:WIFI_SPI_Transmit	56	dynamic
+../Core/Src/wifi.c:81:20:WIFI_Init	32	static
+../Core/Src/wifi.c:121:20:WIFI_SendATCommand	24	static
+../Core/Src/wifi.c:143:20:WIFI_SendATData	24	static
+../Core/Src/wifi.c:177:20:WIFI_JoinNetwork	40	static
+../Core/Src/wifi.c:248:20:WIFI_ConnectServer	40	static
+../Core/Src/wifi.c:265:20:WIFI_DisconnectServer	32	static
+../Core/Src/wifi.c:272:20:WIFI_SendData	32	static
+../Core/Src/wifi.c:285:20:WIFI_SendStr	32	static
+../Core/Src/wifi.c:314:6:trimstr	80	dynamic

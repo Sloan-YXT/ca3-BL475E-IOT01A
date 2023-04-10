@@ -1,0 +1,5 @@
+stm32l475e_iot01_psensor.c:77:10:BSP_PSENSOR_Init	2
+stm32l475e_iot01_psensor.c:101:9:BSP_PSENSOR_ReadID	1
+stm32l475e_iot01_psensor.c:110:7:BSP_PSENSOR_ReadPressure	1
+stm32l475e_iot01_psensor.c:114:9:BSP_PSENSOR_Ready	1
+stm32l475e_iot01_psensor.c:118:6:BSP_PSENSOR_WaitReady	1

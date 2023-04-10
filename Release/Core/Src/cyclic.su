@@ -1,0 +1,9 @@
+../Core/Src/cyclic.c:22:5:gcd	32	static
+../Core/Src/cyclic.c:46:6:registerTask	24	static
+../Core/Src/cyclic.c:57:6:task_scheduler_tick_reset	8	static
+../Core/Src/cyclic.c:66:13:changeMode	248	static
+../Core/Src/cyclic.c:132:6:task_scheduler	232	static
+../Core/Src/cyclic.c:176:5:lcm	32	static
+../Core/Src/cyclic.c:184:6:buildFastMatrix	456	static
+../Core/Src/cyclic.c:382:6:recoverDelayMark	32	static
+../Core/Src/cyclic.c:412:6:showFastMatrix	400	static

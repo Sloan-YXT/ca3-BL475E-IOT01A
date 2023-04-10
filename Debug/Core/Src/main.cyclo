@@ -1,0 +1,12 @@
+main.c:35:13:AI_Init	2
+main.c:52:13:AI_Run	2
+main.c:69:17:argmax	3
+main.c:86:13:WIFI_Init_main	1
+main.c:99:6:taskAcc	3
+main.c:132:6:taskTemp	1
+main.c:139:6:taskMegneto	1
+main.c:151:6:taskHumi	1
+main.c:158:6:taskGyro	1
+main.c:170:6:taskPiezo	1
+main.c:177:6:taskSendMessage	1
+main.c:190:5:main	1

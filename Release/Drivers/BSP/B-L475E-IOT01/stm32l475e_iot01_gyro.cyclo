@@ -1,0 +1,6 @@
+stm32l475e_iot01_gyro.c:78:9:BSP_GYRO_Init	2
+stm32l475e_iot01_gyro.c:121:6:BSP_GYRO_DeInit	3
+stm32l475e_iot01_gyro.c:138:6:BSP_GYRO_LowPower	3
+stm32l475e_iot01_gyro.c:154:6:BSP_GYRO_GetXYZ	3
+stm32l475e_iot01_gyro.c:164:9:BSP_GYRO_Ready	1
+stm32l475e_iot01_gyro.c:168:6:BSP_GYRO_WaitReady	1

@@ -1,0 +1,11 @@
+lps22hb.c:95:6:LPS22HB_P_Init	1
+lps22hb.c:104:9:LPS22HB_P_ReadID	1
+lps22hb.c:121:7:LPS22HB_P_ReadPressure	5
+lps22hb.c:164:6:LPS22HB_T_Init	1
+lps22hb.c:174:7:LPS22HB_T_ReadTemp	2
+lps22hb.c:207:13:LPS22HB_Init	1
+lps22hb.c:233:9:LPS22HB_GetStatus	1
+lps22hb.c:237:9:LPS22HB_PReady	1
+lps22hb.c:242:9:LPS22HB_TReady	1
+lps22hb.c:247:6:LPS22HB_WaitP	2
+lps22hb.c:255:6:LPS22HB_WaitT	2

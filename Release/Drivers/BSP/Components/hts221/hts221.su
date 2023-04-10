@@ -1,0 +1,10 @@
+../Drivers/BSP/Components/hts221/hts221.c:87:6:HTS221_H_Init	24	static
+../Drivers/BSP/Components/hts221/hts221.c:113:9:HTS221_H_ReadID	24	static
+../Drivers/BSP/Components/hts221/hts221.c:130:7:HTS221_H_ReadHumidity	40	static
+../Drivers/BSP/Components/hts221/hts221.c:179:6:HTS221_T_Init	24	static
+../Drivers/BSP/Components/hts221/hts221.c:206:7:HTS221_T_ReadTemp	40	static
+../Drivers/BSP/Components/hts221/hts221.c:234:9:HTS221_GetStatus	16	static
+../Drivers/BSP/Components/hts221/hts221.c:238:9:HTS221_TempReady	24	static
+../Drivers/BSP/Components/hts221/hts221.c:243:9:HTS221_HumiReady	24	static
+../Drivers/BSP/Components/hts221/hts221.c:248:6:HTS221_TempWaitReady	24	static
+../Drivers/BSP/Components/hts221/hts221.c:257:6:HTS221_HumiWaitReady	24	static

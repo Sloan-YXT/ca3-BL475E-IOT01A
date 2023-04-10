@@ -1,0 +1,12 @@
+sensor_config.c:3:6:lsm6dsl_single_tap_intr_en	1
+sensor_config.c:11:6:lsm6dsl_relative_tilt_intr_en	1
+sensor_config.c:19:6:lsm6dsl_dready_en	1
+sensor_config.c:23:6:lsm6dsl_dready_dis	1
+sensor_config.c:28:6:lis3mdl_dready_en	1
+sensor_config.c:32:6:lis3mdl_dready_dis	1
+sensor_config.c:36:6:lps22hb_dready_en	1
+sensor_config.c:40:6:lps22hb_dready_dis	1
+sensor_config.c:44:6:hts221_dready_en	1
+sensor_config.c:48:6:hts221_dready_dis	1
+sensor_config.c:53:6:sensor_config	1
+sensor_config.c:65:5:convert	3

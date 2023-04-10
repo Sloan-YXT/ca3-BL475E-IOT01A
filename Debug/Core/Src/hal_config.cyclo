@@ -1,0 +1,11 @@
+hal_config.c:15:6:Error_Handler	1
+hal_config.c:26:6:SystemClock_Config	4
+hal_config.c:73:6:HAL_GPIO_EXTI_Callback	5
+hal_config.c:165:6:timerDelay	2
+hal_config.c:179:13:MX_GPIO_Init	1
+hal_config.c:209:13:MX_SPI3_Init	2
+hal_config.c:243:6:hal_Init	2
+hal_config.c:344:6:HAL_TIM_Base_MspInit	4
+hal_config.c:368:6:HAL_TIM_PeriodElapsedCallback	3
+hal_config.c:384:6:TIM1_UP_TIM16_IRQHandler	1
+hal_config.c:388:6:TIM2_IRQHandler	1

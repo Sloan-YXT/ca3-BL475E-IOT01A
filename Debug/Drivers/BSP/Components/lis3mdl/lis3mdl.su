@@ -1,0 +1,8 @@
+../Drivers/BSP/Components/lis3mdl/lis3mdl.c:88:6:LIS3MDL_MagInit	16	static
+../Drivers/BSP/Components/lis3mdl/lis3mdl.c:100:6:LIS3MDL_MagDeInit	16	static
+../Drivers/BSP/Components/lis3mdl/lis3mdl.c:121:9:LIS3MDL_MagReadID	8	static
+../Drivers/BSP/Components/lis3mdl/lis3mdl.c:133:6:LIS3MDL_MagLowPower	24	static
+../Drivers/BSP/Components/lis3mdl/lis3mdl.c:160:6:LIS3MDL_MagReadXYZ	40	static
+../Drivers/BSP/Components/lis3mdl/lis3mdl.c:203:9:LIS3MDL_GetStatus	8	static
+../Drivers/BSP/Components/lis3mdl/lis3mdl.c:207:9:LIS3MDL_Ready	16	static
+../Drivers/BSP/Components/lis3mdl/lis3mdl.c:212:6:LIS3MDL_WaitReady	16	static
