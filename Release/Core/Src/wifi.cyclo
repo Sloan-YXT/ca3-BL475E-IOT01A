@@ -8,6 +8,6 @@ wifi.c:143:20:WIFI_SendATData	6
 wifi.c:177:20:WIFI_JoinNetwork	6
 wifi.c:248:20:WIFI_ConnectServer	1
 wifi.c:265:20:WIFI_DisconnectServer	1
-wifi.c:272:20:WIFI_SendData	1
-wifi.c:285:20:WIFI_SendStr	1
-wifi.c:314:6:trimstr	7
+wifi.c:273:20:WIFI_SendData	1
+wifi.c:286:20:WIFI_SendStr	1
+wifi.c:315:6:trimstr	7

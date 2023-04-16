@@ -33,6 +33,7 @@ enum Sensor_Index
 	ACCELERO,
 	TEMP,
 	HUMI,
-	WIFI
+	WIFI,
+	TIME
 };
 #endif

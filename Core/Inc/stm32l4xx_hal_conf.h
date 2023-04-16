@@ -5,7 +5,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2020 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2023 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -77,11 +77,10 @@
 /*#define HAL_OSPI_MODULE_ENABLED   */
 /*#define HAL_OSPI_MODULE_ENABLED   */
 #define HAL_PCD_MODULE_ENABLED
-/*#define HAL_PKA_MODULE_ENABLED   */
 /*#define HAL_QSPI_MODULE_ENABLED   */
 #define HAL_QSPI_MODULE_ENABLED
 /*#define HAL_RNG_MODULE_ENABLED   */
-/*#define HAL_RTC_MODULE_ENABLED   */
+#define HAL_RTC_MODULE_ENABLED
 /*#define HAL_SAI_MODULE_ENABLED   */
 /*#define HAL_SD_MODULE_ENABLED   */
 /*#define HAL_SMBUS_MODULE_ENABLED   */
@@ -95,7 +94,6 @@
 /*#define HAL_USART_MODULE_ENABLED   */
 /*#define HAL_WWDG_MODULE_ENABLED   */
 /*#define HAL_EXTI_MODULE_ENABLED   */
-/*#define HAL_PSSI_MODULE_ENABLED   */
 #define HAL_GPIO_MODULE_ENABLED
 #define HAL_EXTI_MODULE_ENABLED 
 #define HAL_I2C_MODULE_ENABLED
@@ -114,7 +112,7 @@
 #if !defined  (HSE_VALUE) 
   #define HSE_VALUE    ((uint32_t)8000000U) /*!< Value of the External oscillator in Hz */
 #endif /* HSE_VALUE */
-#define HSE_STARTUP_TIMEOUT 0xffff
+
 #if !defined  (HSE_STARTUP_TIMEOUT)
   #define HSE_STARTUP_TIMEOUT    ((uint32_t)100U)   /*!< Time out for HSE start up, in ms */
 #endif /* HSE_STARTUP_TIMEOUT */
@@ -340,10 +338,6 @@
   #include "stm32l4xx_hal_ospi.h"
 #endif /* HAL_OSPI_MODULE_ENABLED */
 
-#ifdef HAL_PKA_MODULE_ENABLED
-  #include "stm32l4xx_hal_pka.h"
-#endif /* HAL_PWR_MODULE_ENABLED */
-
 #ifdef HAL_PWR_MODULE_ENABLED
   #include "stm32l4xx_hal_pwr.h"
 #endif /* HAL_PWR_MODULE_ENABLED */
@@ -420,10 +414,6 @@
   #include "stm32l4xx_hal_gfxmmu.h"
 #endif /* HAL_GFXMMU_MODULE_ENABLED */
 
-#ifdef HAL_PSSI_MODULE_ENABLED
-  #include "stm32l4xx_hal_pssi.h"
-#endif /* HAL_PSSI_MODULE_ENABLED */
-
 /* Exported macro ------------------------------------------------------------*/
 #ifdef  USE_FULL_ASSERT
 /**
@@ -434,7 +424,7 @@
   *         If expr is true, it returns no value.
   * @retval None
   */
-  #define assert_param(expr) ((expr) ? (void)0U : assert_failed((uint8_t *)__FILE__, __LINE__))
+  #define assert_param(expr) ((expr) ? (void)0U : assert_failed((char *)__FILE__, __LINE__))
 /* Exported functions ------------------------------------------------------- */
   void assert_failed(char *file, uint32_t line);
 #else

@@ -3,11 +3,14 @@
 #include "string.h"
 #include "stdio.h"
 #include "stm32l4xx.h"
-unsigned int major_cycle_len = 1200;
-unsigned int minor_cycle_len = 300;
+#define MAJOR_CYCLE_LEN 1500
+#define MINOR_CYCLE_LEN 300
+#define NUMBER_MINOR_CYCLE 5
+unsigned int major_cycle_len = MAJOR_CYCLE_LEN;
+unsigned int minor_cycle_len = MINOR_CYCLE_LEN;
 unsigned int major_cycle;
 unsigned int minor_cycle;
-unsigned int number_minor_cycle=4;
+unsigned int number_minor_cycle = NUMBER_MINOR_CYCLE;
 //sys_time is for delay recovery
 unsigned int system_time;
 volatile Task tasks[num_tasks];
@@ -85,9 +88,9 @@ static void changeMode(int showWindowMs)
 		lps22hb_dready_en();
 		hts221_dready_en();
 #endif
-		major_cycle_len = 1200;
-		minor_cycle_len = 300;
-		number_minor_cycle = 4;
+		major_cycle_len = MAJOR_CYCLE_LEN;
+		minor_cycle_len = MINOR_CYCLE_LEN;
+		number_minor_cycle = NUMBER_MINOR_CYCLE;
 		major_cycle = 0;
 		minor_cycle = 0;
 	}

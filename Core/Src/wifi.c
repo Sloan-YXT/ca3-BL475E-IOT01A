@@ -268,6 +268,7 @@ WIFI_StatusTypeDef WIFI_DisconnectServer(WIFI_HandleTypeDef* hwifi)
 	msgLength = sprintf(wifiTxBuffer,"P6=0\r");
 	WIFI_SendATCommand(hwifi, wifiTxBuffer, msgLength+1, wifiRxBuffer, WIFI_RX_BUFFER_SIZE);
 	WIFI_DEBUG(wifiTxBuffer,wifiRxBuffer);
+	return WIFI_OK;
 }
 WIFI_StatusTypeDef WIFI_SendData(WIFI_HandleTypeDef* hwifi,float data)
 {

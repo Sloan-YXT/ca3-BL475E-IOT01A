@@ -7,7 +7,7 @@
 
 #ifndef SRC_CYCLIC_H_
 #define SRC_CYCLIC_H_
-#define num_tasks 4
+#define num_tasks 5
 #define TASK_NAME_LEN 20
 #define CYCLIC_MODE_TRIGGER_PIN BUTTON_EXTI13_Pin
 #define setPos(x) __asm__ __volatile__("mov r2,pc\n\tsub r2,4\n\tmov %0,r2":"=r"(pos)::"r2")

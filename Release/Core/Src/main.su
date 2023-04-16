@@ -9,4 +9,6 @@
 ../Core/Src/main.c:158:6:taskGyro	192	static
 ../Core/Src/main.c:170:6:taskPiezo	128	static
 ../Core/Src/main.c:177:6:taskSendMessage	32	static
-../Core/Src/main.c:190:5:main	32	static
+../Core/Src/main.c:190:6:taskShowTime	160	static
+../Core/Src/main.c:204:6:SystemClock_Config	232	static
+../Core/Src/main.c:277:5:main	32	static

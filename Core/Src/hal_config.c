@@ -10,64 +10,18 @@ UART_HandleTypeDef huart1;
 TIM_HandleTypeDef TIM1_Handler;
 //led setting off timer
 TIM_HandleTypeDef TIM2_Handler;
-
+RTC_HandleTypeDef hrtc;
 TIM_HandleTypeDef TIM4_Handler;
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
   while(1) {
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
     HAL_Delay(500); /* wait 50 ms */
   }
   /* USER CODE END Error_Handler_Debug */
 }
-void SystemClock_Config(void)
-{
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-
-  /** Configure the main internal regulator output voltage
-  */
-  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 1;
-  RCC_OscInitStruct.PLL.PLLN = 20;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
-  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV8;
-  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV4;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
 
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
@@ -240,6 +194,66 @@ static void MX_SPI3_Init(void)
   /* USER CODE END SPI3_Init 2 */
 
 }
+void MX_RTC_Init(void)
+{
+	  RTC_TimeTypeDef sTime = {0};
+	  RTC_DateTypeDef sDate = {0};
+	  /* USER CODE END RTC_Init 1 */
+	  /**Initialize RTC Only
+	  */
+	  hrtc.Instance = RTC;
+	  hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
+	  hrtc.Init.AsynchPrediv = 127;
+	  hrtc.Init.SynchPrediv = 255;
+	  hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
+	  hrtc.Init.OutPutRemap = RTC_OUTPUT_REMAP_NONE;
+	  hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
+	  hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+	  if (HAL_RTC_Init(&hrtc) != HAL_OK)
+	  {
+	    Error_Handler();
+	  }
+//	  sTime.Hours = 0x0;
+//	  sTime.Minutes = 0x35;
+//	  sTime.Seconds = 0x0;
+//	  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+//	  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+//	  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
+//	  {
+//	   Error_Handler();
+//	  }
+//	  sDate.WeekDay = RTC_WEEKDAY_SUNDAY;
+//	  sDate.Month = RTC_MONTH_APRIL;
+//	  sDate.Date = 0x16;
+//	  sDate.Year = 0x23;
+//	  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
+//	  {
+//	    Error_Handler();
+//	  }
+	if(HAL_RTCEx_BKUPRead(&hrtc,RTC_BKP_DR1)!= 0x5051)
+	{
+		sTime.Hours = 0x0;
+		sTime.Minutes = 0x35;
+		sTime.Seconds = 0x0;
+		sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+		sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+		if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
+		{
+		  Error_Handler();
+		}
+		sDate.WeekDay = RTC_WEEKDAY_SUNDAY;
+		sDate.Month = RTC_MONTH_APRIL;
+		sDate.Date = 0x16;
+		sDate.Year = 0x23;
+
+		if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
+		{
+		  Error_Handler();
+		}
+		HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR1, 0x5051);//向指定的后备区域寄存器写入数据
+   }
+
+}
 void hal_Init(void)
 {
     /* Pin configuration for UART. BSP_COM_Init() can do this automatically */
@@ -339,7 +353,8 @@ void hal_Init(void)
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14,GPIO_PIN_RESET);
     MX_GPIO_Init();
     MX_SPI3_Init();
-    //HAL_NVIC_SetPriority(SysTick_IRQn, 4, 0U);
+    MX_RTC_Init();
+   //HAL_NVIC_SetPriority(SysTick_IRQn, 4, 0U);
 }
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
 {

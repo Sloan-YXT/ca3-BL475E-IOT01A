@@ -9,4 +9,6 @@ main.c:151:6:taskHumi	1
 main.c:158:6:taskGyro	1
 main.c:170:6:taskPiezo	1
 main.c:177:6:taskSendMessage	1
-main.c:190:5:main	1
+main.c:190:6:taskShowTime	1
+main.c:204:6:SystemClock_Config	5
+main.c:277:5:main	1

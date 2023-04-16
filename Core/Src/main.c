@@ -187,11 +187,99 @@ void taskSendMessage(void)
     WIFI_SendStr(&hwifi,humi_in);
     //__set_PRIMASK(0);
 }
+void taskShowTime(void)
+{
+	char message_box[100];
+	RTC_DateTypeDef GetData;  //获取日期结构体
+    RTC_TimeTypeDef GetTime;   //获取时间结构体
+    HAL_RTC_GetTime(&hrtc, &GetTime, RTC_FORMAT_BIN);
+    	        /* Get the RTC current Date */
+    HAL_RTC_GetDate(&hrtc, &GetData, RTC_FORMAT_BIN);
+		/* Display date Format : yy/mm/dd */
+    sprintf(message_box,"Major Cycle %d |Minor Cycle %d|RTC time captured: %02d/%02d/%02d in",major_cycle,minor_cycle,2000 + GetData.Year, GetData.Month, GetData.Date);
+    HAL_UART_Transmit(&huart1, (uint8_t*)message_box, strlen(message_box),0xFFFF);
+    sprintf(message_box,"%02d:%02d:%02d\r\n",GetTime.Hours, GetTime.Minutes, GetTime.Seconds);
+    HAL_UART_Transmit(&huart1, (uint8_t*)message_box, strlen(message_box),0xFFFF);
+}
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+
+  /** Configure LSE Drive Capability
+  */
+  HAL_PWR_EnableBkUpAccess();
+  __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+  /** Initializes the CPU, AHB and APB busses clocks
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_LSE
+                              |RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
+  RCC_OscInitStruct.MSIState = RCC_MSI_ON;
+  RCC_OscInitStruct.MSICalibrationValue = 0;
+  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+  RCC_OscInitStruct.PLL.PLLM = 1;
+  RCC_OscInitStruct.PLL.PLLN = 80;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV4;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Initializes the CPU, AHB and APB busses clocks
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC|RCC_PERIPHCLK_USART1
+                              |RCC_PERIPHCLK_USART3|RCC_PERIPHCLK_I2C2
+                              |RCC_PERIPHCLK_DFSDM1|RCC_PERIPHCLK_USB;
+  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+  PeriphClkInit.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
+  PeriphClkInit.I2c2ClockSelection = RCC_I2C2CLKSOURCE_PCLK1;
+  PeriphClkInit.Dfsdm1ClockSelection = RCC_DFSDM1CLKSOURCE_PCLK;
+  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
+  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLLSAI1;
+  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
+  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+  PeriphClkInit.PLLSAI1.PLLSAI1N = 24;
+  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_48M2CLK;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure the main internal regulator output voltage
+  */
+  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Enable MSI Auto calibration
+  */
+  HAL_RCCEx_EnableMSIPLLMode();
+}
 int main(void)
 {
     //int seconds_count = 0;
     HAL_Init();
     SystemClock_Config();
+
     hal_Init();
     HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
 	BSP_ACCELERO_Init();
@@ -206,7 +294,7 @@ int main(void)
 	//WIFI_ConnectServer(&hwifi,"192.168.3.3","12345");
 	//WIFI_ConnectServer(&hwifi,"192.168.3.5","6666");
 	WIFI_ConnectServer(&hwifi,"47.108.170.207","6666");
-	const char *name = "CA3 IOT NODE";
+	const char *name = "CA3 IOT NODE(main node)";
 	const char *position = "westcove 16";
 	const char *type = "B-L475E-IOT01A";
 	WIFI_SendStr(&hwifi,name);
@@ -220,9 +308,11 @@ int main(void)
 	registerTask(taskSendMessage,"Sending Message",3,0,WIFI,1000);
 	//odr(humidity) = 12.5
 	registerTask(taskHumi,"Humidity reading",2,0,HUMI,floor(1000/12.5));
+	registerTask(taskShowTime,"show current time",4,0,TIME,3000);
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 	AI_Init();
 	task_scheduler();
+
 	while(1);
 }
 

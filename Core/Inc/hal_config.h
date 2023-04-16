@@ -19,8 +19,8 @@
 #include "sensor_config.h"
 extern UART_HandleTypeDef huart1;
 extern volatile int seconds;
+extern RTC_HandleTypeDef hrtc;
 void hal_Init(void);
-void SystemClock_Config(void);
 void timerDelay(uint16_t time);
 extern TIM_HandleTypeDef TIM1_Handler;
 extern __IO FlagStatus cmdDataReady;

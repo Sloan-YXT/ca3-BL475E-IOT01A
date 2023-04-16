@@ -29,7 +29,9 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
-
+//#include "hal_config.h"
+extern RTC_HandleTypeDef hrtc;
+extern UART_HandleTypeDef huart1;
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
